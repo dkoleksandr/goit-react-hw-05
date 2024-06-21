@@ -1,0 +1,11 @@
+li {
+  list-style: none;
+}
+
+.listCard {
+  display: flex;
+  gap: 40px;
+  padding: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
