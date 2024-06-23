@@ -1,0 +1,8 @@
+.movieList {
+  text-align: left;
+  list-style-type: disc;
+}
+
+.movieItem {
+  text-decoration: underline;
+}

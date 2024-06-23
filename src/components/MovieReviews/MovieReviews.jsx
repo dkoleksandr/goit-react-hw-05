@@ -30,18 +30,18 @@ const MovieReviews = () => {
     <>
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      <div>
+      <>
         {movieReviews.length
           ? movieReviews.map((movieReview) => {
               return (
                 <li key={movieReview.id}>
                   <h4>Author: {movieReview.author}</h4>
-                  <div>Content: {movieReview.content}</div>
+                  <div>{movieReview.content}</div>
                 </li>
               );
             })
           : "No reviews"}
-      </div>
+      </>
     </>
   );
 };

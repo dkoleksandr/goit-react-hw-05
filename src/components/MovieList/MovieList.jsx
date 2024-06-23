@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
+import css from "./MoveList.module.css";
 
 const MovieList = ({ movieResults, location }) => {
   return (
-    <>
+    <ul className={css.movieList}>
       {movieResults.map((movie) => (
-        <div key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={location}>
+        <li key={movie.id}>
+          <Link
+            to={`/movies/${movie.id}`}
+            className={css.movieItem}
+            state={location}
+          >
             {movie.title}
           </Link>
-        </div>
+        </li>
       ))}
-    </>
+    </ul>
   );
 };
 

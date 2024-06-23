@@ -9,6 +9,7 @@ import {
 import { getMovieDetailsAPI } from "../../api/search-api";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import css from "./MovieDetailsPage.module.css";
 
 const POSTER_URL = "https://image.tmdb.org/t/p/w500";
 const defaultImg =
@@ -44,26 +45,42 @@ const MovieDetailsPage = () => {
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
       <NavLink to={backLocation.current}>Go back</NavLink>
-      <h4>{movieDetails.original_title}</h4>
-      <img
-        // className={css.image}
-        src={
-          movieDetails.poster_path
-            ? `${POSTER_URL}${movieDetails.poster_path}`
-            : defaultImg
-        }
-        alt={movieDetails.overview ? movieDetails.overview : "poster"}
-      />
-      <div>__________________</div>
+      <div className={css.movieInfo}>
+        <img
+          className={css.movieImage}
+          src={
+            movieDetails.poster_path
+              ? `${POSTER_URL}${movieDetails.poster_path}`
+              : defaultImg
+          }
+          alt={movieDetails.overview ? movieDetails.overview : "poster"}
+        />
+        <div>
+          <h4>{movieDetails.original_title}</h4>
+          <p>User Score: {movieDetails.vote_count}</p>
+          <h5>Overview</h5>
+          <p>{movieDetails.overview}</p>
+          <h5>Genres</h5>
+          <p>
+            {movieDetails.genres &&
+              movieDetails.genres.map(({ id, name }) => {
+                return <span key={id}>{name} </span>;
+              })}
+          </p>
+        </div>
+      </div>
+      <hr />
       <br />
       <div>Additional Information</div>
 
       <Link to={`/movies/${movieId}/cast`} state={location}>
         Cast
       </Link>
+      <br />
       <Link to={`/movies/${movieId}/reviews`} state={location}>
         Reviews
       </Link>
+      <hr />
       <Outlet />
     </>
   );
