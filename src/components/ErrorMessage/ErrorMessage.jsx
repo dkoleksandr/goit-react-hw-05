@@ -1,9 +1,8 @@
+
 const ErrorMessage = () => {
   return (
-    <p>
-      <b>Oops....some error! pls reload</b>
-    </p>
-  );
-};
+    <div>ErrorMessage</div>
+  )
+}
 
-export default ErrorMessage;
+export default ErrorMessage
